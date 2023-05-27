@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,23 +10,74 @@
 <script src="https://cdn.tailwindcss.com"></script>
     <title>Legal Solution</title>
 </head>
+
 <body>
     <!-- Navigation bar -->
-<Section>
-    <nav class="flex justify-between items-center py-5 px-16 m-2">
+<!-- <Section>
+    <nav class="flex flex-col sm:flex-row justify-between items-center py-5 px-6 sm:px-16 m-2">
+        >
         <div>
             <img src="images/logo2.png" alt="">
         </div>
-       <div class="flex gap-12">
+       <div class="flex flex-col gap-4 sm:flex-row sm:gap-12 ">
         <h2>Home</h2>
         <h2 class="flex">Services <img src="images/array.png" alt=""></h2>
         <h2 class="flex">Cases <img src="images/array.png" alt=""></h2>
         <h2 class="flex">Blog <img src="images/array.png" alt=""></h2>
         <h2 class="flex">Contact Us <img src="images/array.png" alt=""></h2>
+
     </div>
-        <button class="font-bold py-2 px-5 rounded  text-white bg-yellow-700 ">Free Consultation</button>
+    <button id="modalBtn" class="font-bold py-2 px-5 rounded text-white bg-yellow-700">Free Consultation</button>
+
+    <div id="modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-lg p-8">
+        <h2 class="text-2xl mb-4">Welcome</h2>
+        <p class="mb-4">Free Consultation center</p>
+        <button id="closeModalBtn" class="py-2 px-4 rounded bg-gray-300 hover:bg-gray-400">Close</button>
+      </div>
+    </div>
+    
+        
     </nav>
-</Section>
+</Section> -->
+  <!-- Navigation bar -->
+  <section>
+    <nav class="flex flex-col sm:flex-row justify-between items-center py-5 px-6 sm:px-16 m-2">
+        <div>
+            <img src="images/logo2.png" alt="">
+        </div>
+        <div class="flex flex-col gap-4 sm:flex-row sm:gap-12">
+            <div class="relative">
+                <h2>Home</h2>
+            </div>
+            <div class="relative">
+                <h2 class="flex">Services <img src="images/array.png" alt=""></h2>
+            </div>
+            <div class="relative">
+                <h2 class="flex">Cases <img src="images/array.png" alt=""></h2>
+            </div>
+            <div class="relative">
+                <h2 class="flex">Blog <img src="images/array.png" alt=""></h2>
+            </div>
+            <div class="relative">
+                <h2 class="flex">Contact Us <img src="images/array.png" alt=""></h2>
+            </div>
+            <button id="menuToggle" class="sm:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <button id="modalBtn" class="font-bold py-2 px-5 rounded text-white bg-yellow-700">Free Consultation</button>
+        <div id="modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg p-8">
+                <h2 class="text-2xl mb-4">Welcome</h2>
+                <p class="mb-4">Free Consultation center</p>
+                <button id="closeModalBtn" class="py-2 px-4 rounded bg-gray-300 hover:bg-gray-400">Close</button>
+            </div>
+        </div>
+    </nav>
+</section>
 <!-- Banner -->
 <section>
 <div>   
@@ -136,5 +188,55 @@
         <h3 class=" pl-8 text-white">The definition of Law is the <br> principles and regulations <br> established in a community <br>  by some authority <br> and applicable to its people</h3>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuItems = document.querySelectorAll('.flex');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const collapsibleMenu = this.nextElementSibling;
+                collapsibleMenu.classList.toggle('hidden');
+            });
+        });
+    });
+</script>
+
+<script>
+    document.getElementById("modalBtn").addEventListener("click", function() {
+  document.getElementById("modal").classList.remove("hidden");
+});
+
+document.getElementById("closeModalBtn").addEventListener("click", function() {
+  document.getElementById("modal").classList.add("hidden");
+});
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuItems = document.querySelectorAll('.flex');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const collapsibleMenu = this.nextElementSibling;
+                collapsibleMenu.classList.toggle('hidden');
+            });
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        menuToggle.addEventListener('click', function() {
+            const menuItems = document.querySelector('.flex.flex-col');
+            menuItems.classList.toggle('hidden');
+        });
+    });
+
+    document.getElementById("modalBtn").addEventListener("click", function() {
+        document.getElementById("modal").classList.remove("hidden");
+    });
+
+    document.getElementById("closeModalBtn").addEventListener("click", function() {
+        document.getElementById("modal").classList.add("hidden");
+    });
+</script>
 </body>
 </html>
